@@ -4,7 +4,6 @@ import christmas.view.checker.InputValueChecker;
 import christmas.view.input.ConsoleInput;
 import christmas.view.input.Input;
 import christmas.view.input.InputView;
-import christmas.view.output.ConsoleOutputView;
 import christmas.view.output.OutputView;
 
 public class EventConfiguration {
@@ -16,15 +15,15 @@ public class EventConfiguration {
         return new InputView(inputValueChecker(), input());
     }
 
-    private Input input() {
-        return new ConsoleInput();
-    }
-
     private InputValueChecker inputValueChecker() {
         return new InputValueChecker();
     }
 
+    private Input input() {
+        return new ConsoleInput();
+    }
+
     private OutputView outputView() {
-        return new ConsoleOutputView();
+        return new OutputView();
     }
 }
