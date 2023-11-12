@@ -1,5 +1,8 @@
 package christmas.controller;
 
+import christmas.dto.UserInput;
+import christmas.model.Order;
+import christmas.util.GameUtil;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
 
@@ -16,7 +19,10 @@ public class EventController {
 
     public void doProcess() {
         int date = readDateFromUser();
-        List<String> orders = readOrderFromUser();
+        List<UserInput> userInputs = readOrderFromUser();
+        Order userOrder = getUserOrder(userInputs);
+
+        outputView.printUsersOrder(userInputs);
     }
 
     private int readDateFromUser() {
@@ -24,7 +30,13 @@ public class EventController {
         return Integer.parseInt(inputView.readDate());
     }
 
-    private List<String> readOrderFromUser() {
-        return inputView.readOrder();
+    private List<UserInput> readOrderFromUser() {
+        return inputView.readOrder().stream()
+                .map(GameUtil::splitByHyphen)
+                .map(UserInput::toDto).toList();
+    }
+
+    private Order getUserOrder(List<UserInput> inputValues) {
+        return new Order(inputValues);
     }
 }
