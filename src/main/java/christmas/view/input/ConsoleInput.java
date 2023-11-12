@@ -7,4 +7,9 @@ public class ConsoleInput implements Input {
     public String readDate() {
         return Console.readLine();
     }
+
+    @Override
+    public String readOrder() {
+        return Console.readLine();
+    }
 }
