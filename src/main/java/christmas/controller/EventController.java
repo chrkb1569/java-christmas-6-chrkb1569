@@ -3,6 +3,8 @@ package christmas.controller;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
 
+import java.util.List;
+
 public class EventController {
     private final InputView inputView;
     private final OutputView outputView;
@@ -13,8 +15,16 @@ public class EventController {
     }
 
     public void doProcess() {
+        int date = readDateFromUser();
+        List<String> orders = readOrderFromUser();
+    }
+
+    private int readDateFromUser() {
         outputView.printStartMessage();
-        String date = inputView.readDate();
-        System.out.println(date);
+        return Integer.parseInt(inputView.readDate());
+    }
+
+    private List<String> readOrderFromUser() {
+        return inputView.readOrder();
     }
 }
