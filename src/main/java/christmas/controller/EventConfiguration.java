@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.service.EventService;
 import christmas.view.checker.InputValueChecker;
 import christmas.view.input.ConsoleInput;
 import christmas.view.input.Input;
@@ -8,7 +9,7 @@ import christmas.view.output.OutputView;
 
 public class EventConfiguration {
     public EventController eventController() {
-        return new EventController(inputView(), outputView());
+        return new EventController(inputView(), outputView(), eventService());
     }
 
     private InputView inputView() {
@@ -25,5 +26,9 @@ public class EventConfiguration {
 
     private OutputView outputView() {
         return new OutputView();
+    }
+
+    private EventService eventService() {
+        return new EventService();
     }
 }

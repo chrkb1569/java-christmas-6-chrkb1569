@@ -30,4 +30,16 @@ public enum Menu {
         return Arrays.stream(values())
                 .anyMatch(value -> value.name.equals(name));
     }
+
+    public static int getPriceByName(String name) {
+        return Arrays.stream(values())
+                .filter(value -> value.name.equals(name))
+                .findFirst().get().price;
+    }
+
+    public static Type getTypeByName(String name) {
+        return Arrays.stream(values())
+                .filter(value -> value.name.equals(name))
+                .findFirst().get().type;
+    }
 }
