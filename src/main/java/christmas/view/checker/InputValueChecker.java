@@ -37,7 +37,7 @@ public class InputValueChecker {
 
     private void checkNumberFormatValidation(String value) {
         if(!Pattern.matches(REGEXP_NUMBER_PATTERN, value)) {
-            throw new NotValidInputException(NOT_VALID_FORMAT.getMessage());
+            throw new NotValidInputException(NOT_VALID_RANGE.getMessage());
         }
     }
 
