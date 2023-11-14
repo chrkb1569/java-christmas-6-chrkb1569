@@ -11,6 +11,7 @@ import christmas.view.output.OutputView;
 import java.util.List;
 
 public class EventController {
+    private final int INIT_DEPTH = 0;
     private final InputView inputView;
     private final OutputView outputView;
     private final EventService eventService;
@@ -31,11 +32,11 @@ public class EventController {
 
     private int readDateFromUser() {
         outputView.printStartMessage();
-        return Integer.parseInt(inputView.readDate());
+        return Integer.parseInt(inputView.readDate(INIT_DEPTH));
     }
 
     private List<UserInput> readOrderFromUser() {
-        return inputView.readOrder().stream()
+        return inputView.readOrder(INIT_DEPTH).stream()
                 .map(GameUtil::splitByHyphen)
                 .map(UserInput::toDto).toList();
     }
