@@ -5,6 +5,7 @@ import org.junit.jupiter.api.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Discount Domain 테스트 코드")
 public class DiscountTest {
     private final int INITIAL_VALUE = 0;
     private final int WEEKEND_DISCOUNT = 2_023;
