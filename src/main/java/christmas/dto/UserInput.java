@@ -3,6 +3,8 @@ package christmas.dto;
 import java.util.List;
 
 public class UserInput {
+    private final static int MENU_INDEX = 0;
+    private final static int QUANTITY_INDEX = 1;
     private String menu;
     private int quantity;
 
@@ -20,6 +22,6 @@ public class UserInput {
     }
 
     public static UserInput toDto(List<String> orders) {
-        return new UserInput(orders.get(0), Integer.parseInt(orders.get(1)));
+        return new UserInput(orders.get(MENU_INDEX), Integer.parseInt(orders.get(QUANTITY_INDEX)));
     }
 }
