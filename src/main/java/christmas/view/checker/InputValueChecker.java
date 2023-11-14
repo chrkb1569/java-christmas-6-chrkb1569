@@ -37,7 +37,7 @@ public class InputValueChecker {
 
     private void checkNumberFormatValidation(final String value) {
         if(!Pattern.matches(REGEXP_NUMBER_PATTERN, value)) {
-            throw new NotValidInputException(NOT_VALID_RANGE.getMessage());
+            throw new NotValidInputException(NOT_VALID_DATE.getMessage());
         }
     }
 
@@ -45,7 +45,7 @@ public class InputValueChecker {
         int cvtValue = Integer.parseInt(value);
 
         if(cvtValue < DATE_CONDITION_MIN || cvtValue > DATE_CONDITION_MAX) {
-            throw new NotValidInputException(NOT_VALID_RANGE.getMessage());
+            throw new NotValidInputException(NOT_VALID_DATE.getMessage());
         }
     }
 
