@@ -25,6 +25,12 @@ public class OutputView {
     private final String TOTAL_DISCOUNT = "%n<총혜택 금액>";
     private final String TOTAL_RESULT_MESSAGE = "%n<할인 후 예상 결제 금액>";
     private final String BADGE_RESULT_MESSAGE = "%n<12월 이벤트 배지>";
+    private final String BADGE_SANTA = "산타";
+    private final String BADGE_TREE = "트리";
+    private final String BADGE_STAR = "별";
+    private final int EXPENSE_SANTA_BADGE = 20_000;
+    private final int EXPENSE_TREE_BADGE = 10_000;
+    private final int EXPENSE_STAR_BADGE = 5_000;
 
     public void printStartMessage() {
         System.out.println(START_MESSAGE);
@@ -127,9 +133,9 @@ public class OutputView {
     private String getBadgeMessage(Benefit benefit) {
         int totalDiscountValue = benefit.getTotalDiscountValue();
 
-        if(totalDiscountValue >= 20000) return "산타";
-        if(totalDiscountValue >= 10000) return "트리";
-        if(totalDiscountValue >= 5000) return "별";
+        if(totalDiscountValue >= EXPENSE_SANTA_BADGE) return BADGE_SANTA;
+        if(totalDiscountValue >= EXPENSE_TREE_BADGE) return BADGE_TREE;
+        if(totalDiscountValue >= EXPENSE_STAR_BADGE) return BADGE_STAR;
         return NOT_BENEFIT;
     }
 }
