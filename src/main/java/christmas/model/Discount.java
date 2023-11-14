@@ -1,6 +1,13 @@
 package christmas.model;
 
 public class Discount {
+    private final int CHRISTMAS_DAY = 25;
+    private final int BASIC_DISCOUNT_DAY = 1_000;
+    private final int ADDED_DISCOUNT_DAY = 100;
+    private final int WEEKEND_DISCOUNT = 2_023;
+    private final int HOLIDAY_DISCOUNT = 2_023;
+    private final int SPECIAL_DISCOUNT = 1_000;
+    private final int MINIMUM_EXPENSE = 120_000;
     private int discountValue;
 
     public Discount() {
@@ -12,34 +19,34 @@ public class Discount {
     }
 
     public int dayDiscount(int date) {
-        if(date > 25) return 0;
-        int dayDiscount = 1000 + (date - 1) * 100;
+        if(date > CHRISTMAS_DAY) return 0;
+        int dayDiscount = BASIC_DISCOUNT_DAY + (date - 1) * ADDED_DISCOUNT_DAY;
         this.discountValue += dayDiscount;
 
         return dayDiscount;
     }
 
     public int weekendDiscount(int dessertMenus) {
-        int weekendDiscount = 2023 * dessertMenus;
+        int weekendDiscount = WEEKEND_DISCOUNT * dessertMenus;
         this.discountValue += weekendDiscount;
 
         return weekendDiscount;
     }
 
     public int holidayDiscount(int mainMenus) {
-        int holidayDiscount = 2023 * mainMenus;
+        int holidayDiscount = HOLIDAY_DISCOUNT * mainMenus;
         this.discountValue += holidayDiscount;
 
         return holidayDiscount;
     }
 
     public int specialDiscount() {
-        this.discountValue += 1000;
-        return 1000;
+        this.discountValue += SPECIAL_DISCOUNT;
+        return SPECIAL_DISCOUNT;
     }
 
     public boolean freebieItem(int totalCost, int freebiePrice) {
-        if(totalCost < 120000) return false;
+        if(totalCost < MINIMUM_EXPENSE) return false;
         this.discountValue += freebiePrice;
         return true;
     }
