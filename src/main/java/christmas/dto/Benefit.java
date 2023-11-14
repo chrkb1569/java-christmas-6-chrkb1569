@@ -1,7 +1,7 @@
 package christmas.dto;
 
 public class Benefit {
-    public final int FREE_BIE_ITEM_PRICE = 25_000;
+    private final int FREE_BIE_ITEM_PRICE = 25_000;
     private int initialCost;
     private int totalDiscountValue;
     private int dayDiscountValue;

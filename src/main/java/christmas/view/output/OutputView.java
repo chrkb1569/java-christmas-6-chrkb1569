@@ -15,6 +15,7 @@ public class OutputView {
     private final int EXPENSE_SANTA_BADGE = 20_000;
     private final int EXPENSE_TREE_BADGE = 10_000;
     private final int EXPENSE_STAR_BADGE = 5_000;
+    private final int FREE_BIE_ITEM_PRICE = 25_000;
 
     public void printStartMessage() {
         System.out.println(START_MESSAGE);
@@ -115,7 +116,7 @@ public class OutputView {
 
     private void printFreebieMessage(Benefit benefit) {
         boolean freebie = benefit.getFreebie();
-        if(freebie) System.out.println(String.format(FREEBIE_DISCOUNT_MESSAGE.toString(), benefit.FREE_BIE_ITEM_PRICE));
+        if(freebie) System.out.println(String.format(FREEBIE_DISCOUNT_MESSAGE.toString(), FREE_BIE_ITEM_PRICE));
     }
 
     private String getBadgeMessage(Benefit benefit) {
