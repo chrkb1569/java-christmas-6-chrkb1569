@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
+@DisplayName("GameUtil Class 테스트 코드")
 public class GameUtilTest {
     @ParameterizedTest
     @DisplayName("splitByComma() method 테스트")
