@@ -14,7 +14,7 @@ public class InputView {
     private final InputValueChecker inputValueChecker;
     private final Input input;
 
-    public InputView(InputValueChecker inputValueChecker, Input input) {
+    public InputView(final InputValueChecker inputValueChecker, final Input input) {
         this.inputValueChecker = inputValueChecker;
         this.input = input;
     }

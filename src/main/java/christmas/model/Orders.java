@@ -12,12 +12,12 @@ public class Orders {
     private Map<Type, Order> orders;
     private Cost cost;
 
-    public Orders(List<UserInput> inputValues) {
+    public Orders(final List<UserInput> inputValues) {
         orders = getOrders(inputValues);
         cost = new Cost(inputValues);
     }
 
-    public int getQuantityByType(Type type) {
+    public int getQuantityByType(final Type type) {
         if(!orders.containsKey(type)) return 0;
         return this.orders.get(type).getQuantity();
     }
@@ -26,7 +26,7 @@ public class Orders {
         return this.cost.getInitialCost();
     }
 
-    private Map<Type, Order> getOrders(List<UserInput> inputValues) {
+    private Map<Type, Order> getOrders(final List<UserInput> inputValues) {
         Map<Type, Order> orders = new ConcurrentHashMap<>();
 
         for(UserInput inputValue : inputValues) {
@@ -39,7 +39,7 @@ public class Orders {
         return orders;
     }
 
-    private Map<Type, Order> putTypeValue(Map<Type, Order> orders, Type type, int quantity) {
+    private Map<Type, Order> putTypeValue(Map<Type, Order> orders, final Type type, final int quantity) {
         if(orders.containsKey(type)) {
             Order order = orders.get(type);
             orders.put(type, new Order(order.getQuantity() + quantity));

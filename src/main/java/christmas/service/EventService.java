@@ -16,7 +16,7 @@ public class EventService {
     private final int CHRISTMAS_DATE = 25;
     private final String FREEBIE_ITEM_NAME = "샴페인";
 
-    public EventResult getEventResult(int date) {
+    public EventResult getEventResult(final int date) {
         String day = convertDate(date);
 
         boolean holidayDiscount = checkHolidayDiscount(day);
@@ -26,26 +26,26 @@ public class EventService {
         return new EventResult(date, weekendDiscount, holidayDiscount, specialDiscount);
     }
 
-    public Benefit getTotalBenefit(List<UserInput> inputValues, EventResult eventResult) {
+    public Benefit getTotalBenefit(final List<UserInput> inputValues, final EventResult eventResult) {
         Orders orders = new Orders(inputValues);
         Discount discount = new Discount();
 
         return getBenefit(orders, discount, eventResult);
     }
 
-    private boolean checkHolidayDiscount(String day) {
+    private boolean checkHolidayDiscount(final String day) {
         return day.equals(FRIDAY.getDate()) || day.equals(SATURDAY.getDate());
     }
 
-    private boolean checkWeekendDiscount(String day) {
+    private boolean checkWeekendDiscount(final String day) {
         return !day.equals(FRIDAY.getDate()) && !day.equals(SATURDAY.getDate());
     }
 
-    private boolean checkSpecialDiscount(String day, int date) {
+    private boolean checkSpecialDiscount(final String day, final int date) {
         return day.equals(SUNDAY.getDate()) || date == CHRISTMAS_DATE;
     }
 
-    private Benefit getBenefit(Orders orders, Discount discount, EventResult eventResult) {
+    private Benefit getBenefit(final Orders orders, final Discount discount, final EventResult eventResult) {
         int initialCost = orders.getInitialCost();
         int dayDiscount = getDayDiscount(discount, eventResult);
         int weekendDiscount = getWeekendDiscount(orders, discount, eventResult);
@@ -58,11 +58,11 @@ public class EventService {
                 holidayDiscount, specialDiscount, freebieValue);
     }
 
-    private int getDayDiscount(Discount discount, EventResult eventResult) {
+    private int getDayDiscount(final Discount discount, final EventResult eventResult) {
         return discount.dayDiscount(eventResult.getDate());
     }
 
-    private int getWeekendDiscount(Orders orders, Discount discount, EventResult eventResult) {
+    private int getWeekendDiscount(final Orders orders, final Discount discount, final EventResult eventResult) {
         int weekendDiscount = 0;
 
         if(eventResult.isWeekendDiscount()) {
@@ -73,7 +73,7 @@ public class EventService {
         return weekendDiscount;
     }
 
-    private int getHolidayDiscount(Orders orders, Discount discount, EventResult eventResult) {
+    private int getHolidayDiscount(final Orders orders, final Discount discount, final EventResult eventResult) {
         int holidayDiscount = 0;
 
         if(eventResult.isHolidayDiscount()) {
@@ -84,7 +84,7 @@ public class EventService {
         return holidayDiscount;
     }
 
-    private int getSpecialDiscount(Discount discount, EventResult eventResult) {
+    private int getSpecialDiscount(final Discount discount, final EventResult eventResult) {
         int specialDiscount = 0;
 
         if(eventResult.isSpecialDiscount()) {

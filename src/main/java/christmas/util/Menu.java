@@ -20,24 +20,24 @@ public enum Menu {
     private final Type type;
     private final int price;
 
-    Menu(String name, Type type, int price) {
+    Menu(final String name, final Type type, final int price) {
         this.name = name;
         this.type = type;
         this.price = price;
     }
 
-    public static boolean findMenu(String name) {
+    public static boolean findMenu(final String name) {
         return Arrays.stream(values())
                 .anyMatch(value -> value.name.equals(name));
     }
 
-    public static int getPriceByName(String name) {
+    public static int getPriceByName(final String name) {
         return Arrays.stream(values())
                 .filter(value -> value.name.equals(name))
                 .findFirst().get().price;
     }
 
-    public static Type getTypeByName(String name) {
+    public static Type getTypeByName(final String name) {
         return Arrays.stream(values())
                 .filter(value -> value.name.equals(name))
                 .findFirst().get().type;

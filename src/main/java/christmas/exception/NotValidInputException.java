@@ -1,7 +1,7 @@
 package christmas.exception;
 
 public class NotValidInputException extends IllegalArgumentException {
-    public NotValidInputException(String message) {
+    public NotValidInputException(final String message) {
         super(message);
     }
 }

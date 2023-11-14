@@ -16,7 +16,7 @@ public enum Date {
     private final int index;
     private final String date;
 
-    Date(int index, String date) {
+    Date(final int index, final String date) {
         this.index = index;
         this.date = date;
     }
@@ -25,7 +25,7 @@ public enum Date {
         return this.date;
     }
 
-    public static String convertDate(int date) {
+    public static String convertDate(final int date) {
         return Arrays.stream(values())
                 .filter(value -> value.index == date % DIV_NUMBER)
                 .findFirst().get().getDate();

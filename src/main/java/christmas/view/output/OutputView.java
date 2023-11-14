@@ -21,11 +21,11 @@ public class OutputView {
         System.out.println(START_MESSAGE);
     }
 
-    public void printDateBenefit(int date) {
+    public void printDateBenefit(final int date) {
         System.out.println(String.format(DATE_BENEFIT_MESSAGE.toString(), date));
     }
 
-    public void printOrderInfo(List<UserInput> inputValues) {
+    public void printOrderInfo(final List<UserInput> inputValues) {
         System.out.println(String.format(ORDERED_MENU_MESSAGE.toString()));
 
         for(UserInput inputValue : inputValues) {
@@ -33,17 +33,17 @@ public class OutputView {
         }
     }
 
-    public void printInitialCost(Benefit benefit) {
+    public void printInitialCost(final Benefit benefit) {
         System.out.println(String.format(TOTAL_COST_BEFORE_DISCOUNT.toString()));
         System.out.println(String.format(COST_MESSAGE.toString(), benefit.getInitialCost()));
     }
 
-    public void printFreebieItem(Benefit benefit) {
+    public void printFreebieItem(final Benefit benefit) {
         System.out.println(String.format(FREEBIE_MESSAGE.toString()));
         System.out.println(getFreebieMessage(benefit.getFreebie()));
     }
 
-    public void printBenefits(Benefit benefit) {
+    public void printBenefits(final Benefit benefit) {
         System.out.println(String.format(BENEFIT_LIST_MESSAGE.toString()));
 
         if(checkResultMessage(benefit)) {
@@ -58,31 +58,31 @@ public class OutputView {
         printFreebieMessage(benefit);
     }
 
-    public void printTotalDiscount(Benefit benefit) {
+    public void printTotalDiscount(final Benefit benefit) {
         System.out.println(String.format(TOTAL_BENEFIT_MESSAGE.toString()));
         System.out.println(String.format(DISCOUNTED_COST_MESSAGE.toString(), benefit.getTotalDiscountValue()));
     }
 
-    public void printResultCost(Benefit benefit) {
+    public void printResultCost(final Benefit benefit) {
         System.out.println(String.format(TOTAL_COST_AFTER_DISCOUNT.toString()));
         System.out.println(String.format(COST_MESSAGE.toString(), benefit.getTotalResult()));
     }
 
-    public void printBadgeMessage(Benefit benefit) {
+    public void printBadgeMessage(final Benefit benefit) {
         System.out.println(String.format(EVENT_BADGE_MESSAGE.toString()));
         System.out.println(getBadgeMessage(benefit));
     }
 
-    public static <T extends NotValidInputException> void printInputExceptionMessage(T exception) {
+    public static <T extends NotValidInputException> void printInputExceptionMessage(final T exception) {
         System.out.println(exception.getMessage());
     }
 
-    private String getFreebieMessage(boolean freebieValue) {
+    private String getFreebieMessage(final boolean freebieValue) {
         if(freebieValue) return FREEBIE_ITEM.toString();
         return NOT_BENEFIT_MESSAGE.toString();
     }
 
-    private boolean checkResultMessage(Benefit benefit) {
+    private boolean checkResultMessage(final Benefit benefit) {
         int dayDiscountValue = benefit.getDayDiscountValue();
         int weekendDiscountValue = benefit.getWeekendDiscountValue();
         int holidayDiscountValue = benefit.getHolidayDiscountValue();
@@ -94,32 +94,32 @@ public class OutputView {
                 && !freebieValue;
     }
 
-    private void printDayDiscountMessage(Benefit benefit) {
+    private void printDayDiscountMessage(final Benefit benefit) {
         int dayDiscount = benefit.getDayDiscountValue();
         if(dayDiscount != 0) System.out.println(String.format(DAY_DISCOUNT_MESSAGE.toString(), dayDiscount));
     }
 
-    private void printWeekendDiscountMessage(Benefit benefit) {
+    private void printWeekendDiscountMessage(final Benefit benefit) {
         int weekendDiscountValue = benefit.getWeekendDiscountValue();
         if(weekendDiscountValue != 0) System.out.println(String.format(WEEKEND_DISCOUNT_MESSAGE.toString(), weekendDiscountValue));
     }
 
-    private void printHolidayDiscountMessage(Benefit benefit) {
+    private void printHolidayDiscountMessage(final Benefit benefit) {
         int holidayDiscountValue = benefit.getHolidayDiscountValue();
         if(holidayDiscountValue != 0) System.out.println(String.format(HOLIDAY_DISCOUNT_MESSAGE.toString(), holidayDiscountValue));
     }
 
-    private void printSpecialDiscountMessage(Benefit benefit) {
+    private void printSpecialDiscountMessage(final Benefit benefit) {
         int specialDiscountValue = benefit.getSpecialDiscountValue();
         if(specialDiscountValue != 0) System.out.println(String.format(SPECIAL_DISCOUNT_MESSAGE.toString(), specialDiscountValue));
     }
 
-    private void printFreebieMessage(Benefit benefit) {
+    private void printFreebieMessage(final Benefit benefit) {
         boolean freebie = benefit.getFreebie();
         if(freebie) System.out.println(String.format(FREEBIE_DISCOUNT_MESSAGE.toString(), FREE_BIE_ITEM_PRICE));
     }
 
-    private String getBadgeMessage(Benefit benefit) {
+    private String getBadgeMessage(final Benefit benefit) {
         int totalDiscountValue = benefit.getTotalDiscountValue();
 
         if(totalDiscountValue >= EXPENSE_SANTA_BADGE) return BADGE_SANTA;

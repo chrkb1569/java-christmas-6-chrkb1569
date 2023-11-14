@@ -18,13 +18,13 @@ public class InputValueChecker {
     private final int MENU_INDEX = 0;
     private final int PRICE_INDEX = 1;
 
-    public void checkDateValidation(String date) throws NotValidInputException {
+    public void checkDateValidation(final String date) throws NotValidInputException {
         checkNumberFormatValidation(date);
         checkRangeValidation(date);
     }
 
     public void checkOrderValidation(String order) throws NotValidInputException {
-        List<String> orders = GameUtil.splitByComma(order);
+        final List<String> orders = GameUtil.splitByComma(order);
 
         for(String value : orders) {
             checkOrderFormatValidation(value);
@@ -35,13 +35,13 @@ public class InputValueChecker {
         checkOrderQuantityValidation(orders);
     }
 
-    private void checkNumberFormatValidation(String value) {
+    private void checkNumberFormatValidation(final String value) {
         if(!Pattern.matches(REGEXP_NUMBER_PATTERN, value)) {
             throw new NotValidInputException(NOT_VALID_RANGE.getMessage());
         }
     }
 
-    private void checkRangeValidation(String value) {
+    private void checkRangeValidation(final String value) {
         int cvtValue = Integer.parseInt(value);
 
         if(cvtValue < DATE_CONDITION_MIN || cvtValue > DATE_CONDITION_MAX) {
@@ -49,7 +49,7 @@ public class InputValueChecker {
         }
     }
 
-    private void checkOrderFormatValidation(String order) {
+    private void checkOrderFormatValidation(final String order) {
         if(!Pattern.matches(REGEXP_ORDER_PATTERN, order)) {
             throw new NotValidInputException(NOT_VALID_ORDER.getMessage());
         }
@@ -63,7 +63,7 @@ public class InputValueChecker {
         }
     }
 
-    private void checkMenuDupValidation(List<String> orders) {
+    private void checkMenuDupValidation(final List<String> orders) {
         int size = orders.stream().map(GameUtil::splitByHyphen)
                 .map(value -> value.get(MENU_INDEX))
                 .toList().stream().distinct().toList().size();
@@ -73,7 +73,7 @@ public class InputValueChecker {
         }
     }
 
-    private void checkOrderQuantityValidation(List<String> orders) {
+    private void checkOrderQuantityValidation(final List<String> orders) {
         int sum = orders.stream().map(GameUtil::splitByHyphen)
                 .mapToInt(value -> Integer.parseInt(value.get(PRICE_INDEX)))
                 .sum();

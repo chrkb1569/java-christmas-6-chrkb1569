@@ -8,7 +8,7 @@ public class UserInput {
     private String menu;
     private int quantity;
 
-    public UserInput(String menu, int quantity) {
+    public UserInput(final String menu, final int quantity) {
         this.menu = menu;
         this.quantity = quantity;
     }
@@ -21,7 +21,7 @@ public class UserInput {
         return this.quantity;
     }
 
-    public static UserInput toDto(List<String> orders) {
+    public static UserInput toDto(final List<String> orders) {
         return new UserInput(orders.get(MENU_INDEX), Integer.parseInt(orders.get(QUANTITY_INDEX)));
     }
 }

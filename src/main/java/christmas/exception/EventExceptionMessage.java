@@ -6,7 +6,7 @@ public enum EventExceptionMessage {
     ;
     private final String message;
 
-    EventExceptionMessage(String message) {
+    EventExceptionMessage(final String message) {
         this.message = message;
     }
 

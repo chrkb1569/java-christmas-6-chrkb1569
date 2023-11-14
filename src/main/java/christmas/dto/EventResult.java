@@ -6,8 +6,8 @@ public class EventResult {
     private boolean holidayDiscount;
     private boolean specialDiscount;
 
-    public EventResult(int date, boolean weekendDiscount,
-                       boolean holidayDiscount, boolean specialDiscount) {
+    public EventResult(final int date, final boolean weekendDiscount,
+                       final boolean holidayDiscount, final boolean specialDiscount) {
         this.date = date;
         this.weekendDiscount = weekendDiscount;
         this.holidayDiscount = holidayDiscount;

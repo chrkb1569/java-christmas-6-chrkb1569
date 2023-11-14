@@ -8,7 +8,7 @@ import java.util.List;
 public class Cost {
     private int initialCost;
 
-    public Cost(List<UserInput> inputValues) {
+    public Cost(final List<UserInput> inputValues) {
         this.initialCost = getCost(inputValues);
     }
 
@@ -16,7 +16,7 @@ public class Cost {
         return this.initialCost;
     }
 
-    private int getCost(List<UserInput> inputValues) {
+    private int getCost(final List<UserInput> inputValues) {
         int cost = 0;
 
         for(UserInput inputValue : inputValues) {

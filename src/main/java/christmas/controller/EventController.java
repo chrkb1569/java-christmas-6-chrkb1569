@@ -15,7 +15,7 @@ public class EventController {
     private final OutputView outputView;
     private final EventService eventService;
 
-    public EventController(InputView inputView, OutputView outputView, EventService eventService) {
+    public EventController(final InputView inputView, final OutputView outputView, final EventService eventService) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.eventService = eventService;
@@ -40,17 +40,17 @@ public class EventController {
                 .map(UserInput::toDto).toList();
     }
 
-    private void printInfo(List<UserInput> inputValues, int date) {
+    private void printInfo(final List<UserInput> inputValues, final int date) {
         outputView.printDateBenefit(date);
         outputView.printOrderInfo(inputValues);
     }
 
-    private Benefit getBenefit(List<UserInput> inputValues, int date) {
+    private Benefit getBenefit(final List<UserInput> inputValues, final int date) {
         EventResult eventResult = eventService.getEventResult(date);
         return eventService.getTotalBenefit(inputValues, eventResult);
     }
 
-    private void printEventResult(Benefit benefit) {
+    private void printEventResult(final Benefit benefit) {
         outputView.printInitialCost(benefit);
         outputView.printFreebieItem(benefit);
         outputView.printBenefits(benefit);

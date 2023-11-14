@@ -10,8 +10,9 @@ public class Benefit {
     private int specialDiscountValue;
     private boolean freebie;
 
-    public Benefit(int initialCost, int totalDiscountValue, int dayDiscountValue, int weekendDiscountValue,
-                   int holidayDiscountValue, int specialDiscountValue, boolean freebie) {
+    public Benefit(final int initialCost, final int totalDiscountValue, final int dayDiscountValue,
+                   final int weekendDiscountValue, final int holidayDiscountValue,
+                   final int specialDiscountValue, final boolean freebie) {
         this.initialCost = initialCost;
         this.totalDiscountValue = totalDiscountValue;
         this.dayDiscountValue = dayDiscountValue;

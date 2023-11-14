@@ -18,7 +18,7 @@ public class Discount {
         return this.discountValue;
     }
 
-    public int dayDiscount(int date) {
+    public int dayDiscount(final int date) {
         if(date > CHRISTMAS_DAY) return 0;
         int dayDiscount = BASIC_DISCOUNT_DAY + (date - 1) * ADDED_DISCOUNT_DAY;
         this.discountValue += dayDiscount;
@@ -26,14 +26,14 @@ public class Discount {
         return dayDiscount;
     }
 
-    public int weekendDiscount(int dessertMenus) {
+    public int weekendDiscount(final int dessertMenus) {
         int weekendDiscount = WEEKEND_DISCOUNT * dessertMenus;
         this.discountValue += weekendDiscount;
 
         return weekendDiscount;
     }
 
-    public int holidayDiscount(int mainMenus) {
+    public int holidayDiscount(final int mainMenus) {
         int holidayDiscount = HOLIDAY_DISCOUNT * mainMenus;
         this.discountValue += holidayDiscount;
 
@@ -45,7 +45,7 @@ public class Discount {
         return SPECIAL_DISCOUNT;
     }
 
-    public boolean freebieItem(int totalCost, int freebiePrice) {
+    public boolean freebieItem(final int totalCost, final int freebiePrice) {
         if(totalCost < MINIMUM_EXPENSE) return false;
         this.discountValue += freebiePrice;
         return true;
