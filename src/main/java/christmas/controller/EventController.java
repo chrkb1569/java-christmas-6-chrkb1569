@@ -25,17 +25,10 @@ public class EventController {
         int date = readDateFromUser();
         List<UserInput> userInputs = readOrderFromUser();
 
-        outputView.printOrderInfo(userInputs);
+        printUserInputs(userInputs);
 
-        EventResult eventResult = eventService.getEventResult(date);
-        Benefit benefit = eventService.getTotalBenefit(userInputs, eventResult);
-
-        outputView.printInitialCost(benefit);
-        outputView.printFreebieItem(benefit);
-        outputView.printBenefits(benefit);
-        outputView.printTotalDiscount(benefit);
-        outputView.printResultCost(benefit);
-        outputView.printBadgeMessage(benefit);
+        Benefit benefit = getBenefit(userInputs, date);
+        printEventResult(benefit);
     }
 
     private int readDateFromUser() {
@@ -47,5 +40,23 @@ public class EventController {
         return inputView.readOrder().stream()
                 .map(GameUtil::splitByHyphen)
                 .map(UserInput::toDto).toList();
+    }
+
+    private void printUserInputs(List<UserInput> inputValues) {
+        outputView.printOrderInfo(inputValues);
+    }
+
+    private Benefit getBenefit(List<UserInput> inputValues, int date) {
+        EventResult eventResult = eventService.getEventResult(date);
+        return eventService.getTotalBenefit(inputValues, eventResult);
+    }
+
+    private void printEventResult(Benefit benefit) {
+        outputView.printInitialCost(benefit);
+        outputView.printFreebieItem(benefit);
+        outputView.printBenefits(benefit);
+        outputView.printTotalDiscount(benefit);
+        outputView.printResultCost(benefit);
+        outputView.printBadgeMessage(benefit);
     }
 }
