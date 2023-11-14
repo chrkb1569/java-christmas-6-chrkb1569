@@ -25,10 +25,8 @@ public class EventController {
         int date = readDateFromUser();
         List<UserInput> userInputs = readOrderFromUser();
 
-        printUserInputs(userInputs, date);
-
-        Benefit benefit = getBenefit(userInputs, date);
-        printEventResult(benefit);
+        printInfo(userInputs, date);
+        printEventResult(getBenefit(userInputs, date));
     }
 
     private int readDateFromUser() {
@@ -42,7 +40,7 @@ public class EventController {
                 .map(UserInput::toDto).toList();
     }
 
-    private void printUserInputs(List<UserInput> inputValues, int date) {
+    private void printInfo(List<UserInput> inputValues, int date) {
         outputView.printDateBenefit(date);
         outputView.printOrderInfo(inputValues);
     }
