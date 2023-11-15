@@ -3,6 +3,8 @@ package christmas.service;
 import christmas.dto.Benefit;
 import christmas.dto.EventResult;
 import christmas.dto.UserInput;
+import christmas.factory.BenefitFactory;
+import christmas.factory.EventResultFactory;
 import christmas.factory.UserInputFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,14 +21,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("EventService Class 테스트 코드")
 public class InputServiceTest {
     private final static String menu = "크리스마스파스타";
-    private final static int price = 25_000;
     private final static int quantity = 10;
-    private List<UserInput> userInputs;
     private EventService eventService;
 
     @BeforeEach
     public void initTest() {
-        userInputs = UserInputFactory.getUserInputs(menu, quantity);
         eventService = new EventService();
     }
 
@@ -70,20 +69,17 @@ public class InputServiceTest {
 
     private static Stream<Arguments> getEventResultExamples() {
         return Stream.of(
-                Arguments.of(7, new EventResult(7, true, false, false)),
-                Arguments.of(25, new EventResult(25, true, false, true)),
-                Arguments.of(30, new EventResult(30, false, true, false))
+                Arguments.of(7, EventResultFactory.EVENT_RESULT_1.getInstance()),
+                Arguments.of(25, EventResultFactory.EVENT_RESULT_2.getInstance()),
+                Arguments.of(30, EventResultFactory.EVENT_RESULT_3.getInstance())
         );
     }
 
     private static Stream<Arguments> getTotalBenefitExamples() {
         return Stream.of(
-                Arguments.of(new EventResult(7, true, false, false),
-                        new Benefit(price * quantity, 26_600, 1_600, 0, 0, 0, true)),
-                Arguments.of(new EventResult(25, true, false, true),
-                        new Benefit(price * quantity, 29_400, 3_400, 0, 0, 1_000, true)),
-                Arguments.of(new EventResult(30, false, true, false),
-                        new Benefit(price * quantity, 45_230, 0, 0, 20_230, 0, true))
+                Arguments.of(EventResultFactory.EVENT_RESULT_1.getInstance(), BenefitFactory.BENEFIT_1.getInstance()),
+                Arguments.of(EventResultFactory.EVENT_RESULT_2.getInstance(), BenefitFactory.BENEFIT_2.getInstance()),
+                Arguments.of(EventResultFactory.EVENT_RESULT_3.getInstance(), BenefitFactory.BENEFIT_3.getInstance())
         );
     }
 }
